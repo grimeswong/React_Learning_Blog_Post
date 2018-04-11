@@ -5,7 +5,7 @@ import { fetchPosts } from '../actions';
 class PostsIndex extends Component {
 
   componentDiDMount() {
-    this.props.fetchPost();
+    this.props.fetchPosts();
   }
 
   render() {
@@ -17,4 +17,4 @@ class PostsIndex extends Component {
   }
 }
 
-export default connect(null, { fetchPosts:fetchPosts })(PostsIndex);  // or {fetchPost} ES6 syntax
+export default connect(null, { fetchPosts: fetchPosts })(PostsIndex);  // or {fetchPosts} ES6 syntax
