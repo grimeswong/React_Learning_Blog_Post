@@ -5,6 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter, Route } from 'react-router-dom';  // BrowserRouter - what interacts with the history library and decides exactly what to do based on a chanage inside theURL
 
 import reducers from './reducers';
+import PostsIndex from './components/posts_index';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
@@ -13,7 +14,7 @@ ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <BrowserRouter>
       <div>
-
+          <Route path="/" component={ PostsIndex } />
       </div>
     </BrowserRouter>
   </Provider>
