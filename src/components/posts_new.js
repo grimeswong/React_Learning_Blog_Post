@@ -22,9 +22,16 @@ class PostsNew extends Component {
     );
   }
 
+  onSubmit(values) {
+    // this === component
+    console.log(values);
+  }
+
   render() {
+    const { handleSubmit } = this.props; {/* = const handleSubmit = this.props.handleSubmit ES6 syntax */}
+
     return(
-      <form>
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))} >
         <Field
           label="Title For Post"
           name="title"
@@ -40,6 +47,7 @@ class PostsNew extends Component {
           name="content"
           component={this.renderField}
         />
+        <button type="submit" className="btn btn-primary">Submit</button>
       </form>
     );
   }
@@ -47,7 +55,7 @@ class PostsNew extends Component {
 
 function validate(values) {
   const errors = {};  // return the empty object if it's nothing wrong, otherwise return
-  console.log(values); // to check the value
+  // console.log(values); // to check the value
   // if (values.title.length < 3) { // check it whether is less than 3 characters
   //   errors.title = "Title must be at least 3 characters";
   // }
