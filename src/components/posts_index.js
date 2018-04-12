@@ -4,7 +4,7 @@ import { fetchPosts } from '../actions';
 
 class PostsIndex extends Component {
 
-  componentDiDMount() {
+  componentDidMount() { // Must be typed correctly, otherwise, it will not be executed
     this.props.fetchPosts();
   }
 
