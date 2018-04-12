@@ -59,7 +59,7 @@ function validate(values) {
     errors.categories = " Enter some categories";
   }
   if (!values.content) {
-    errors.categories = "Enter some content please";
+    errors.content = "Enter some content please";
   }
 
   // If errors is empty, the form is fine to submit
