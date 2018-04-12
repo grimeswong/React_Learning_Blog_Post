@@ -9,6 +9,7 @@ class PostsIndex extends Component {
   }
 
   render() {
+    console.log(this.props.posts);
     return (
       <div>
         Posts Index
@@ -17,4 +18,9 @@ class PostsIndex extends Component {
   }
 }
 
-export default connect(null, { fetchPosts: fetchPosts })(PostsIndex);  // or {fetchPosts} ES6 syntax
+// map component to application level
+function mapStateToProps(state) {
+  return { posts: state.posts };
+}
+
+export default connect(mapStateToProps, { fetchPosts: fetchPosts })(PostsIndex);  // or {fetchPosts} ES6 syntax
