@@ -16,7 +16,7 @@ class PostsNew extends Component {
         {/* onBlur={field.input.onBlur }*/}
 
         {/* display error messages */}
-        {field.meta.error}
+        {field.meta.touched ? field.meta.error : '' } {/* If the field has been touched and the data is invalid, show the error message up, otherwise, show nothing */ }
 
       </div>
     );
