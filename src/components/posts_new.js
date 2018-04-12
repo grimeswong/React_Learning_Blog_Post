@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
+import { Field, reduxForm } from 'redux-form';
 
 class PostsNew extends Component {
   render() {
     return(
-      <div>
-        PostNews!
-      </div>
+      <form>
+        <Field
+          name="title"
+          component={}
+        />
+      </form>
     );
   }
 }
 
-export default PostsNew;
+export default reduxForm({  // configuration:
+  form: 'PostsNewForm'    // must be unique
+})(PostsNew);
