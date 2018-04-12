@@ -1,6 +1,8 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../actions';
+
 
 class PostsIndex extends Component {
 
@@ -8,11 +10,27 @@ class PostsIndex extends Component {
     this.props.fetchPosts();
   }
 
+  /* Make a helper function that display the posts,
+  but not able to use map because the data format is object, not array */
+
+  /* Use lodash to map (loop) the elements */
+  renderPosts() {
+    return _.map(this.props.posts, post => {
+      return (
+        <li className="list-group-item" key={post.id}>  {/* use key to list the items */}
+          {post.title}
+        </li>
+      );
+    });
+  }
+
   render() {
-    console.log(this.props.posts);
     return (
       <div>
-        Posts Index
+        <h3>Posts</h3>
+        <ul className="list-group">
+          {this.renderPosts()}
+        </ul>
       </div>
     );
   }
