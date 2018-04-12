@@ -41,6 +41,29 @@ class PostsNew extends Component {
   }
 }
 
+function validate(values) {
+  const errors = {};  // return the empty object if it's nothing wrong, otherwise return
+  console.log(values); // to check the value
+  // if (values.title.length < 3) { // check it whether is less than 3 characters
+  //   errors.title = "Title must be at least 3 characters";
+  // }
+  // validate the inputs from 'values'
+  if (!values.title) {
+    errors.title = "Enter a title";
+  }
+  if (!values.categories) {
+    errors.categories = " Enter some categories";
+  }
+  if (!values.content) {
+    errors.categories = "Enter some content please";
+  }
+
+  // If errors is empty, the form is fine to submit
+  // If errors has *any* properties, redux form assumes form is invalid
+  return errors;
+}
+
 export default reduxForm({  // configuration:
+  validate,     // or validate as ES5 (validate: validate, )
   form: 'PostsNewForm'    // must be unique that not share the state with other form
 })(PostsNew);
