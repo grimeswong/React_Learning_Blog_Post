@@ -1,6 +1,9 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'; /* Link is like anchor tag in html for navigate to different page,
+but in react, only change the component when navigate to different page */
+
 import { fetchPosts } from '../actions';
 
 
@@ -27,6 +30,11 @@ class PostsIndex extends Component {
   render() {
     return (
       <div>
+        <div className="text-xs-right">
+          <Link className="btn btn-primary" to="/posts/new">  {/* "to" for define the link where will navigate to */}
+            Add a Post
+          </Link>
+        </div>
         <h3>Posts</h3>
         <ul className="list-group">
           {this.renderPosts()}
