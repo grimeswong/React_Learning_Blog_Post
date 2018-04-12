@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';  // reduxForm function helper - wrap the postsNew component that communicate directly from this component to the reducer
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createPost } from '../actions'
 
 class PostsNew extends Component {
   renderField(field) { //  contain event handler is going to be responsible for making sure this field
@@ -29,7 +32,8 @@ class PostsNew extends Component {
 
   onSubmit(values) {
     // this === component
-    console.log(values);
+    // console.log(values);
+    this.props.createPost(values);
   }
 
   render() {
@@ -53,6 +57,7 @@ class PostsNew extends Component {
           component={this.renderField}
         />
         <button type="submit" className="btn btn-primary">Submit</button>
+        <Link to="/" className="btn btn-danger">Cancel</Link>
       </form>
     );
   }
@@ -83,4 +88,6 @@ function validate(values) {
 export default reduxForm({  // configuration:
   validate,     // or validate as ES5 (validate: validate, )
   form: 'PostsNewForm'    // must be unique that not share the state with other form
-})(PostsNew);
+})( // connect two helpers
+  connect(null, { createPost }) (PostsNew)  // connect multiple helpers
+);
