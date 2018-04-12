@@ -14,6 +14,10 @@ class PostsNew extends Component {
         {/* onChange={field.input.onChange }*/}
         {/* onFocus={field.input.onFocus }*/}
         {/* onBlur={field.input.onBlur }*/}
+
+        {/* display error messages */}
+        {field.meta.error}
+
       </div>
     );
   }
