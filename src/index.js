@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { BrowserRouter, Route } from 'react-router-dom';  // BrowserRouter - what interacts with the history library and decides exactly what to do based on a chanage inside theURL
+import { BrowserRouter, Route, Switch } from 'react-router-dom';  // BrowserRouter - what interacts with the history library and decides exactly what to do based on a chanage inside theURL
 import promise from 'redux-promise';
 
 import reducers from './reducers';
@@ -16,8 +16,11 @@ ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <BrowserRouter>
       <div>
-          <Route path="/" component={ PostsIndex } />
+        <Switch>  {/* Switch component will decide to match the first route that match the current URL */}
+          {/* put the most specific path on top, and put the root route at the bottom */ }
           <Route path="/posts/new" component={ PostsNew } />
+          <Route path="/" component={ PostsIndex } /> {/* all path contain "/" also be executed by this route eg. /posts */}
+        </Switch>
       </div>
     </BrowserRouter>
   </Provider>
