@@ -3,8 +3,11 @@ import { Field, reduxForm } from 'redux-form';  // reduxForm function helper - w
 
 class PostsNew extends Component {
   renderField(field) { //  contain event handler is going to be responsible for making sure this field
+    const { meta } = field; {/* = const meta = field.meta */}
+    const className = `form-group ? ${field.meta.touched && field.meta.error ? 'has-danger': ''}`;
+
     return(
-      <div className="form-group">
+      <div className="form-group className">
         <label>{field.label}</label>
         <input className="form-control"
           type="text"
@@ -16,7 +19,9 @@ class PostsNew extends Component {
         {/* onBlur={field.input.onBlur }*/}
 
         {/* display error messages */}
-        {field.meta.touched ? field.meta.error : '' } {/* If the field has been touched and the data is invalid, show the error message up, otherwise, show nothing */ }
+        <div className="text-help">
+          {field.meta.touched ? field.meta.error : '' } {/* If the field has been touched and the data is invalid, show the error message up, otherwise, show nothing */ }
+        </div>
 
       </div>
     );
