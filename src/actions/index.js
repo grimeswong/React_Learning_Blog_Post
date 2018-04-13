@@ -1,11 +1,13 @@
 import axios from 'axios';  // package for making http request
 
-export const FETCH_POSTS = 'fetch_posts';
+export const FETCH_POSTS = 'fetch_posts'; // fetch all post
+export const FETCH_POST = 'fetch_post'; // fetch single post
 export const CREATE_POST = 'create_post';
 
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
 const API_KEY = '?key=SHADOWG123';  //define by yourself, must be unique key
 
+// function to get all the posts
 export function fetchPosts() {
   const request = axios.get(`${ROOT_URL}/posts${API_KEY}`);
 
@@ -15,6 +17,7 @@ export function fetchPosts() {
   };
 }
 
+// function to create post and store it
 export function createPost(values, callback) {
      //first arg(URL), second arg(data or object)
   const request = axios.post(`${ROOT_URL}/posts${API_KEY}`, values)
@@ -24,4 +27,14 @@ export function createPost(values, callback) {
     type: CREATE_POST,
     payload: request
   };
+}
+
+// function to get the particular post request by user
+export function fetchPost(id) {
+  const request = axios.get(`${ROOT_URL}/posts/${id}${API_KEY}`);
+
+  return {
+    type: FETCH_POST,
+    payload: request;   // the data responsed by server
+  }
 }
