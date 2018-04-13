@@ -35,6 +35,6 @@ export function fetchPost(id) {
 
   return {
     type: FETCH_POST,
-    payload: request;   // the data responsed by server
+    payload: request  /* payload: the data responsed by server */
   }
 }

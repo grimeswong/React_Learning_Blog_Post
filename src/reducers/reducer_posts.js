@@ -13,7 +13,7 @@ export default function(state = {}, action) { //default state to an object
     // return newState;
 
     /* ES6 Syntax */
-    return { ...state, [action.payload.data.id: action.payload.data]}; // first is making key for this object, second is the value of this object
+    return { ...state, [action.payload.data.id]: action.payload.data};  /* first is making key for this object(not array), second is the value of this object */
 
     case FETCH_POSTS:
       console.log("Fetching All Posts...");
