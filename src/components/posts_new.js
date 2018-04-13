@@ -31,9 +31,10 @@ class PostsNew extends Component {
   }
 
   onSubmit(values) {
-    // this === component
-    // console.log(values);
-    this.props.createPost(values);
+
+    this.props.createPost(values, () => { {/* Make a callback function */}
+      this.props.history.push('/');   //automatically navigate back to root path
+    });
   }
 
   render() {
