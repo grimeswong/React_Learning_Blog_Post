@@ -5,8 +5,10 @@ import { fetchPost } from '../actions';
 
 class PostsShow extends Component {
   componentDidMount() {
+    // if (!this.props.post) {  // optional
     const { id } = this.props.match.params;
     this.props.fetchPost(id);
+    // } // If the posts have been fetch, then don't to fetch again
 
   }
   render() {
